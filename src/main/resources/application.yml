@@ -1,26 +1,26 @@
 spring:
   application:
     name: demo
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    type: com.alibaba.druid.pool.DruidDataSource
-    username:
-    password:
-    url: jdbc:mysql://192.168.0.2:3306/foundation
-    druid:
-      max-active: 5 #最大连接池数量
-      min-idle: 2 #最小连接池数量
-      max-wait: 1000 #获取连接最大等待时间
-      min-evictable-idle-time-millis: 300000 #空闲连接存活时间
-      keep-alive: true
-      keep-alive-between-time-millis: 300000 #keep-alive操作时间间隔
-      pool-prepared-statements: false #是否缓存prepareStatement
-      test-on-borrow: true #申请连接时检查连接是否有效
-      test-on-return: false #归还连接时检查连接是否有效
-      test-while-idle: true #连接空闲时检查是否有效
-      time-between-eviction-runs-millis: 60000 #连接检查时间间隔
-      use-unfair-lock: true #使用非公平锁
-      validation-query: null # 数据库检活sql
-  dao:
-    exceptiontranslation:
-      enabled: false
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    type: com.alibaba.druid.pool.DruidDataSource
+#    username:
+#    password:
+#    url: jdbc:mysql://192.168.0.2:3306/foundation
+#    druid:
+#      max-active: 5 #最大连接池数量
+#      min-idle: 2 #最小连接池数量
+#      max-wait: 1000 #获取连接最大等待时间
+#      min-evictable-idle-time-millis: 300000 #空闲连接存活时间
+#      keep-alive: true
+#      keep-alive-between-time-millis: 300000 #keep-alive操作时间间隔
+#      pool-prepared-statements: false #是否缓存prepareStatement
+#      test-on-borrow: true #申请连接时检查连接是否有效
+#      test-on-return: false #归还连接时检查连接是否有效
+#      test-while-idle: true #连接空闲时检查是否有效
+#      time-between-eviction-runs-millis: 60000 #连接检查时间间隔
+#      use-unfair-lock: true #使用非公平锁
+#      validation-query: null # 数据库检活sql
+#  dao:
+#    exceptiontranslation:
+#      enabled: false
