@@ -7,10 +7,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
-
+@Setter
 @Configuration
 @ConfigurationProperties(prefix = "spring.datasource")
-@Setter
 public class DataSourceConfig {
 
     private String url;
@@ -36,3 +35,4 @@ public class DataSourceConfig {
     }
 
 }
+

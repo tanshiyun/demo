@@ -1,0 +1,12 @@
+plugins {
+    id 'java'
+}
+
+group 'com.yun'
+version '0.0.1-SNAPSHOT'
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    implementation project(":common-service")
+}
