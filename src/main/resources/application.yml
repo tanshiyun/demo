@@ -7,7 +7,7 @@ server:
       directory: D:/logs/${spring.application.name}/
       prefix: ${spring.application.name}-tomcat-access_
       suffix: .log
-      pattern: '%{yyyy-MM-dd HH:mm:ss.SSS}t-[%h][%{X-Forwarded-For}i][Referer=%{Referer}i]-[sessionId=%S]-[%r]-[response=%s]-[process_spent=%Dms][response_take=%Fms]'
+      pattern: '%{yyyy-MM-dd HH:mm:ss.SSS}t-[%h][%{X-Forwarded-For}i][Referer=%{Referer}i]-[sessionId=%S]-[%r]-[response=%s]-[process_spent=%Dms][response_spent=%Fms]'
       file-date-format: yyyy-MM-dd
 
 spring:
