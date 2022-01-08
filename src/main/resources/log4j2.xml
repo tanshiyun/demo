@@ -8,11 +8,11 @@
         <property name="appName">demo</property>
         <property name="logPath">D:/logs</property>
         <property name="charset">UTF-8</property>
-        <property name="pattern">%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5p] [%t] [%c{1}:%M %L]: %m %n</property>
+        <property name="pattern">%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5p] [%t] [%replace{%F}{\..*}{}][%M:%L}] [MSG]: %m %n</property>
     </Properties>
     <!--先定义所有的appender -->
     <appenders>
-        <!--这个输出控制台的配置 -->
+        <!--控制台输出配置 -->
         <console name="CONSOLE" target="SYSTEM_OUT">
             <!--输出日志的格式 ${pattern}使用属性变量 -->
             <PatternLayout pattern="${pattern}" charset="${charset}" />
@@ -33,8 +33,7 @@
                 <TimeBasedTriggeringPolicy modulate="true" interval="1" />
                 <SizeBasedTriggeringPolicy size="100MB" />
             </Policies>
-            <!-- max 最多20个文件 IfLastModified 保留日志的天数 超过30天删除旧的日志 basePath 删除目录 maxDepth
-                搜索层数 -->
+            <!-- max 最多20个文件 IfLastModified 保留日志的天数 超过30天删除旧的日志 basePath 删除目录 maxDepth搜索层数 -->
             <DefaultRolloverStrategy max="20">
                 <Delete basePath="${logPath}/${appName}/$${date:yyyy-MM}/" maxDepth="1">
                     <IfFileName glob="info-*.log" />
@@ -79,15 +78,37 @@
                 </Delete>
             </DefaultRolloverStrategy>
         </RollingFile>
+
+        <!-- Druid日志 -->
+        <RollingFile name="DruidRollingFile" fileName="${logPath}/${appName}/other/${appName}-druid.log" filePattern="${logPath}/${appName}/$${date:yyyy-MM}/${appName}-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout pattern="${pattern}" charset="${charset}" />
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1" /> <!-- 按天分割 -->
+                <SizeBasedTriggeringPolicy size="100MB" /> <!-- 按100MB分割 -->
+            </Policies>
+            <DefaultRolloverStrategy max="20">
+                <Delete basePath="${logPath}/${appName}/$${date:yyyy-MM}/" maxDepth="1">
+                    <IfFileName glob="${appName}-*.log" />
+                    <IfLastModified age="30d" />
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
     </appenders>
 
     <!--然后定义logger，只有定义了logger并引入的appender，appender才会生效 -->
     <loggers>
+        <logger name="druid.sql.Statement" level="INFO" additivity="false">
+            <appender-ref ref="DruidRollingFile"/>
+        </logger>
+        <logger name="druid.sql.ResultSet" level="INFO" additivity="false">
+            <appender-ref ref="DruidRollingFile"/>
+        </logger>
+
         <root level="INFO">
             <appender-ref ref="CONSOLE" />
-            <!-- <appender-ref ref="RollingFileInfo" />
-            <appender-ref ref="RollingFileWarn" />
-            <appender-ref ref="RollingFileError" /> -->
+<!--            <appender-ref ref="RollingFileInfo" />-->
+<!--            <appender-ref ref="RollingFileWarn" />-->
+<!--            <appender-ref ref="RollingFileError" /> -->
         </root>
     </loggers>
 </configuration>
