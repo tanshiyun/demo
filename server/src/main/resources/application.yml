@@ -82,3 +82,12 @@ spring:
         login-password: admin
         allow: 127.0.0.1
         deny: 192.168.1.100
+  freemarker:
+    settings:
+      classic_compatible: true #处理空值
+      datetime_format: yyy-MM-dd HH:mm
+      number_format: 0.##
+    suffix: .ftlh
+    template-loader-path:
+      - classpath:/templates
+    cache: true

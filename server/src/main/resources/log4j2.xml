@@ -80,7 +80,7 @@
         </RollingFile>
 
         <!-- Druid日志 -->
-        <RollingFile name="DruidRollingFile" fileName="${logPath}/${appName}/other/${appName}-druid.log" filePattern="${logPath}/${appName}/$${date:yyyy-MM}/${appName}-%d{yyyy-MM-dd}-%i.log">
+        <RollingFile name="DruidRollingFile" fileName="${logPath}/${appName}/sql/${appName}-druid.log" filePattern="${logPath}/${appName}/$${date:yyyy-MM}/${appName}-%d{yyyy-MM-dd}-%i.log">
             <PatternLayout pattern="${pattern}" charset="${charset}" />
             <Policies>
                 <TimeBasedTriggeringPolicy modulate="true" interval="1" /> <!-- 按天分割 -->
