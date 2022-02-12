@@ -11,7 +11,7 @@
         div {
             width: 80%;
             height: 20%;
-            margin: 2.5em auto auto;
+            margin: 12vh auto auto;
             display: block;
             font-size: 5rem;
             font-weight: bold;
