@@ -104,6 +104,8 @@
             <appender-ref ref="DruidRollingFile"/>
         </logger>
 
+<!--        <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE" />-->
+
         <root level="INFO">
             <appender-ref ref="CONSOLE" />
 <!--            <appender-ref ref="RollingFileInfo" />-->
